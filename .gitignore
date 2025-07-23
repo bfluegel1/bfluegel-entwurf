@@ -1,0 +1,5 @@
+.from_ai/
+.old/
+assets/old.img/
+assets/backend/.env
+assets/backend/.htaccess

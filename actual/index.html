@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bastian Flügel - Digital Innovation Manager</title>
+    <meta name="description"
+        content="Bastian Flügel - Digital Innovation Manager. Experte für digitale Transformation, Innovation und strategische Technologie-Beratung.">
+    <meta name="keywords" content="Digital Innovation, Manager, Technologie, Beratung, Transformation">
+    <meta name="author" content="Bastian Flügel">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Bastian Flügel - Digital Innovation Manager">
+    <meta property="og:description" content="Experte für digitale Transformation und Innovation">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://bastianfluegel.de">
+    <meta property="og:image" content="https://bastianfluegel.de/assets/img/og-image.jpg">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Bastian Flügel - Digital Innovation Manager">
+    <meta name="twitter:description" content="Experte für digitale Transformation und Innovation">
+    <meta name="twitter:image" content="https://bastianfluegel.de/assets/img/og-image.jpg">
+
+    <!-- Alternative: Phosphor Icons direkt über CSS laden -->
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.0.3/src/regular/style.css">
+    <script>
+        // Phosphor Icons direkt laden falls Script nicht funktioniert
+        document.addEventListener('DOMContentLoaded', function () {
+            // Überprüfe ob Phosphor Icons geladen sind
+            const testIcon = document.createElement('i');
+            testIcon.className = 'ph ph-rocket';
+            testIcon.style.visibility = 'hidden';
+            document.body.appendChild(testIcon);
+
+            // Falls Icons nicht geladen sind, verwende Fallback
+            setTimeout(() => {
+                const computed = window.getComputedStyle(testIcon, ':before');
+                if (computed.content === 'none' || computed.content === '') {
+                    console.log('🔧 Using Phosphor Icons fallback');
+                    document.body.classList.add('phosphor-fallback');
+                }
+                document.body.removeChild(testIcon);
+            }, 100);
+        });
+    </script>
+
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Favicon -->
+    <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16x16.png">
+    <link rel="manifest" href="assets/site.webmanifest">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/modals.css">
+
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="assets/img/hero-professional.webp" as="image">
+    <link rel="preload" href="assets/img/hero-portrait.webp" as="image">
+</head>
+
+<body>
+    <!-- Skip Link for Accessibility -->
+    <a href="#main-content" class="skip-link">Zum Hauptinhalt springen</a>
+
+    <!-- 
+    ===============================================================================
+    HEADER SECTION
+    ===============================================================================
+    Navigation header with logo, language toggle, authentication, and user menu
+    -->
+    <header class="header" role="banner">
+        <div class="header__container container" style="display: flex; width: 100%;">
+            <!-- Logo -->
+            <a href="#" class="header__logo" style="flex:1; position: relative;" aria-label="Bastian Flügel Homepage">
+                <img src="assets/img/logo.webp" style="height: 100%; position: absolute;" alt="Bastian Flügel Logo"
+                    class="header__logo-img">
+                <span style="margin-left: 2em;">Bastian Flügel</span>
+            </a>
+
+            <!-- Header Controls -->
+            <nav class="header__controls" role="navigation" aria-label="Hauptnavigation">
+                <!-- Language Toggle -->
+                <button class="header__control-link" id="lang-toggle" aria-label="Sprache wechseln"
+                    title="Sprache wechseln" data-module="language-manager">
+                    <i class="ph ph-globe" aria-hidden="true"></i>
+                    <span>DE</span>
+                </button>
+
+                <!-- Login/Logout Button -->
+                <button class="header__control-link" id="auth-toggle" aria-label="Anmelden" title="Anmelden"
+                    data-module="auth-manager">
+                    <i class="ph ph-sign-in" aria-hidden="true"></i>
+                    <span>Login</span>
+                </button>
+
+                <!-- User Menu (only visible when logged in) -->
+                <div class="user-menu" data-module="user-menu" style="display: none;" id="user-menu-container">
+                    <button class="header__control-link" id="user-menu-btn" aria-label="Benutzermenü öffnen"
+                        aria-expanded="false" aria-haspopup="true">
+                        <i class="ph ph-user-circle" aria-hidden="true"></i>
+                        <span>Menü</span>
+                    </button>
+                    <div class="user-menu__content" id="user-menu-content" role="menu">
+                        <a href="#" class="user-menu__item" role="menuitem" data-modal="comingsoon">
+                            <i class="ph ph-user" aria-hidden="true"></i>
+                            <span data-translate="menu-profile">Profil</span>
+                        </a>
+
+                        <a href="#" class="user-menu__item" role="menuitem" data-modal="einstellungen">
+                            <i class="ph ph-gear" aria-hidden="true"></i>
+                            <span data-translate="menu-settings">Einstellungen</span>
+                        </a>
+                        <a href="#" class="user-menu__item" role="menuitem" data-modal="kontakt">
+                            <i class="ph ph-envelope" aria-hidden="true"></i>
+                            <span data-translate="menu-contact">Kontakt</span>
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 
+    ===============================================================================
+    MAIN CONTENT
+    ===============================================================================
+    Primary content area with hero section and service cards
+    -->
+    <main id="main-content" role="main">
+        <!-- Hero Section -->
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="hero__container container">
+                <div class="hero__content">
+                    <h1 id="hero-title" class="hero__title" data-translate="hero-title">
+                        Digital Enthusiast
+                    </h1>
+                    <h2 class="hero__subtitle" data-translate="hero-subtitle">
+                        Schwerpunkt IT-Sicherheit & Prozessoptimierung
+                    </h2>
+                    <p class="hero__text" data-translate="hero-text">
+                        Mein Antrieb: <br>
+                        Die digitale Welt menschlicher, sicherer und sinnvoller zu machen – nicht nur effizienter.
+                        <br><br>
+                        Ich verbinde <strong>futuristisch-innovatives Denken</strong> mit <strong>klassischer
+                            Philosophie</strong>
+                        und glaube daran, dass echte Optimierung nur funktioniert, wenn Technik und Mensch in Einklang
+                        stehen.
+                    </p>
+                    <div class="hero__buttons">
+                        <a href="#about" class="btn btn--primary" data-translate="btn-primary" >
+                            <i class="ph ph-user" aria-hidden="true"></i>
+                            <span>Mehr über mich</span>
+                        </a>
+                        <a href="#contact" class="btn btn--secondary" data-translate="btn-secondary" data-modal="kontakt">
+                            <i class="ph ph-chat-circle" aria-hidden="true"></i>
+                            <span>Kontakt aufnehmen</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="hero__image">
+                    <div class="hero__image-placeholder" aria-hidden="true">
+                        <!-- Optional Portrait/Visual via CSS -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cards Section -->
+        <section class="cards-section" aria-labelledby="cards-title" id="about">
+            <div class="container">
+                <div class="cards-section__grid">
+                    <!-- Card 1: Mindset -->
+                    <div class="card" tabindex="0" data-module="card-interaction" data-card="mindset" data-modal="comingsoon">
+                        <i class="ph ph-brain card__icon" aria-hidden="true"></i>
+                        <h3 class="card__title" data-translate="card-mindset-title">Mein Mindset</h3>
+                        <p class="card__description" data-translate="card-mindset-desc">
+                            Für mich ist Technik kein Selbstzweck. <br>
+                            Ich glaube an Lösungen, die Leben und Arbeit wirklich besser machen –
+                            <strong>ehrlich, nachhaltig und mit Blick auf das Menschliche</strong>.<br>
+                            <em>Philosophie trifft Zukunft – und daraus entsteht echte Veränderung.</em>
+                        </p>
+                    </div>
+                    <!-- Card 2: Optimieren mit Haltung -->
+                    <div class="card" tabindex="0" data-module="card-interaction" data-card="attitude" data-modal="comingsoon">
+                        <i class="ph ph-lightning card__icon" aria-hidden="true"></i>
+                        <h3 class="card__title" data-translate="card-attitude-title">Optimieren mit Haltung</h3>
+                        <p class="card__description" data-translate="card-attitude-desc">
+                            Ich will nicht um jeden Preis beschleunigen – <strong>mein Ziel ist echte
+                                Vereinfachung</strong>.<br>
+                            Das heißt für mich: <br>
+                            Prozesse entschlacken, Sicherheit mitdenken und dabei <strong>den Menschen nie aus dem Fokus
+                                verlieren</strong>.<br>
+                            <em>Optimierung beginnt mit Zuhören und Nachdenken, nicht mit Aktionismus.</em>
+                        </p>
+                    </div>
+                    <!-- Card 3: Symbiose aus Innovation & Philosophie -->
+                    <div class="card" tabindex="0" data-module="card-interaction" data-card="vision" data-modal="comingsoon">
+                        <i class="ph ph-globe-hemisphere-west card__icon" aria-hidden="true"></i>
+                        <h3 class="card__title" data-translate="card-vision-title">Symbiose aus Innovation & Philosophie
+                        </h3>
+                        <p class="card__description" data-translate="card-vision-desc">
+                            Ich bringe <strong>futuristische Ideen</strong> und <strong>analytische Tiefe</strong>
+                            zusammen.<br>
+                            Mein Ziel: Brücken bauen zwischen klassischer Denkkunst und modernster Technologie.<br>
+                            <em>Ich suche Austausch mit Menschen, die ebenso ganzheitlich denken – und gemeinsam Zukunft
+                                gestalten wollen.</em>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+
+    <!-- 
+    ===============================================================================
+    FOOTER SECTION
+    ===============================================================================
+    Site footer with contact information, legal links, and social media
+    -->
+    <footer class="footer" role="contentinfo">
+        <div class="footer__content container">
+            <!-- Contact Section -->
+            <div class="footer__section">
+                <h3 data-translate="footer-contact-title">Kontakt</h3>
+                <address>
+                    <p style="color: var(--color-cream);">
+                        <strong>Bastian Flügel</strong><br>
+                        <span data-translate="footer-contact-position">Digital Enthusiast</span><br>
+                        <a href="mailto:kontakt@bastianfluegel.de">
+                            <i class="ph ph-envelope" aria-hidden="true"></i>
+                            <a href="mailto:info@bfluegel.de">info@bfluegel.de</a>
+                        </a><br>
+                        <a href="tel:+491234567890">
+                            <i class="ph ph-phone" aria-hidden="true"></i>
+                            <a href="tel:+4917637530596">+49&nbsp;176&nbsp;37530596</a>
+                        </a>
+                    </p>
+                </address>
+            </div>
+
+
+
+            <!-- Legal Links -->
+            <div class="footer__section">
+                <h3 data-translate="footer-legal-title">Legal</h3>
+                <ul class="footer__links">
+                    <li>
+                        <a href="#" data-modal="impressum">
+                            <i class="ph ph-info" aria-hidden="true"></i>
+                            <span data-translate="footer-legal-impressum">Impressum</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" data-modal="datenschutz">
+                            <i class="ph ph-shield-check" aria-hidden="true"></i>
+                            <span data-translate="footer-legal-privacy">Datenschutz</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" data-modal="agb">
+                            <i class="ph ph-file-text" aria-hidden="true"></i>
+                            <span data-translate="footer-legal-terms">AGB</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" data-modal="cookies">
+                            <i class="ph ph-cookie" aria-hidden="true"></i>
+                            <span data-translate="footer-legal-cookies">Cookie-Einstellungen</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" data-modal="kontakt">
+                            <i class="ph ph-headset" aria-hidden="true"></i>
+                            <span data-translate="footer-legal-contact">Kontakt</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Social Media -->
+            <div class="footer__section">
+                <h3 data-translate="footer-social-title">Social Media</h3>
+                <div class="footer__social" role="list">
+                    <a href="#" class="footer__social-link" aria-label="Instagram" role="listitem"
+                        data-modal="comingsoon" rel="noopener noreferrer">
+                        <i class="ph ph-instagram-logo" aria-hidden="true"></i>
+                        <span>Instagram</span>
+                    </a>
+                    <a href="#" class="footer__social-link" aria-label="YouTube" role="listitem" data-modal="comingsoon"
+                        rel="noopener noreferrer">
+                        <i class="ph ph-youtube-logo" aria-hidden="true"></i>
+                        <span>YouTube</span>
+                    </a>
+                    <a href="#" class="footer__social-link" aria-label="LinkedIn" role="listitem"
+                        data-modal="comingsoon" rel="noopener noreferrer">
+                        <i class="ph ph-linkedin-logo" aria-hidden="true"></i>
+                        <span>LinkedIn</span>
+                    </a>
+                    <a href="https://patreob.com/bfluegel" class="footer__social-link" aria-label="Patreon"
+                        role="listitem" data-modal="comingsoon" rel="noopener noreferrer">
+                        <i class="ph ph-patreon-logo" aria-hidden="true"></i>
+                        <span>Patreon</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Bottom -->
+        <div class="footer__bottom container">
+            <p data-translate="footer-copyright" style="color: var(--color-cream);">
+                &copy; 2025 Bastian Flügel. Alle Rechte vorbehalten.
+            </p>
+        </div>
+    </footer>
+
+    <!-- 
+    ===============================================================================
+    COOKIE BANNER (Optional)
+    ===============================================================================
+    GDPR-compliant cookie consent banner
+    -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;" aria-live="polite">
+        <div class="cookie-banner__content">
+            <div class="cookie-banner__text">
+                <h4>
+                    <i class="ph ph-cookie" aria-hidden="true"></i>
+                    <span data-translate="cookie-banner-title">Cookies</span>
+                </h4>
+                <p data-translate="cookie-banner-text">
+                    Wir verwenden Cookies, um Ihnen die bestmögliche Nutzererfahrung zu bieten.
+                    Sie können Ihre Präferenzen anpassen oder alle Cookies akzeptieren.
+                </p>
+            </div>
+            <div class="cookie-banner__actions">
+                <button class="btn btn--secondary btn--sm" data-modal="cookies">
+                    <i class="ph ph-gear" aria-hidden="true"></i>
+                    <span data-translate="cookie-banner-settings">Einstellungen</span>
+                </button>
+                <button class="btn btn--primary btn--sm" onclick="acceptAllCookies()">
+                    <i class="ph ph-check" aria-hidden="true"></i>
+                    <span data-translate="cookie-banner-accept">Alle akzeptieren</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 
+    ===============================================================================
+    JAVASCRIPT MODULES
+    ===============================================================================
+    -->
+    <script src="js/app.js"></script>
+    <script src="js/modals.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/contact.js"></script>
+
+    <!-- Cookie Banner Functionality -->
+    <script>
+        // Cookie Banner Management
+        function showCookieBanner() {
+            const banner = document.getElementById('cookie-banner');
+            if (banner) {
+                banner.style.display = 'block';
+                setTimeout(() => banner.classList.add('active'), 100);
+            }
+        }
+
+        function hideCookieBanner() {
+            const banner = document.getElementById('cookie-banner');
+            if (banner) {
+                banner.classList.remove('active');
+                setTimeout(() => banner.style.display = 'none', 300);
+            }
+        }
+
+        function acceptAllCookies() {
+            if (window.modalManager) {
+                window.modalManager.acceptAllCookies();
+            }
+            hideCookieBanner();
+        }
+
+        // Show cookie banner if no settings exist
+        document.addEventListener('DOMContentLoaded', () => {
+            const hasSettings = window.BastianFluegelApp?.utils?.storage('cookie_settings');
+            if (!hasSettings) {
+                setTimeout(showCookieBanner, 2000);
+            }
+        });
+    </script>
+
+    <!-- 
+    ===============================================================================
+    STRUCTURED DATA - JSON-LD
+    ===============================================================================
+    SEO and Rich Snippets for search engines
+    -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Bastian Flügel",
+        "jobTitle": "Digital Innovation Manager",
+        "description": "Experte für digitale Transformation, Innovation und strategische Technologie-Beratung",
+        "url": "https://bastianfluegel.de",
+        "email": "kontakt@bastianfluegel.de",
+        "telephone": "+49-123-456-7890",
+        "sameAs": [
+            "https://linkedin.com/in/bastianfluegel",
+            "https://xing.com/profile/bastianfluegel",
+            "https://instagram.com/bastianfluegel",
+            "https://youtube.com/bastianfluegel"
+        ],
+        "knowsAbout": [
+            "Digital Transformation",
+            "Innovation Management",
+            "Technology Consulting",
+            "Project Management",
+            "Change Management",
+            "Agile Methodologies"
+        ],
+        "worksFor": {
+            "@type": "Organization",
+            "name": "Bastian Flügel Consulting"
+        }
+    }
+    </script>
+
+    <style>
+        /* Cookie Banner Styles */
+        .cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--color-white);
+            border-top: 1px solid var(--color-border-light);
+            box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+            padding: var(--space-lg);
+            z-index: var(--z-toast);
+            transform: translateY(100%);
+            transition: transform var(--transition-normal);
+        }
+
+        .cookie-banner.active {
+            transform: translateY(0);
+        }
+
+        .cookie-banner__content {
+            max-width: var(--container-max-width);
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: var(--space-lg);
+            flex-wrap: wrap;
+        }
+
+        .cookie-banner__text h4 {
+            margin: 0 0 var(--space-xs) 0;
+            color: var(--color-primary-green);
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+        }
+
+        .cookie-banner__text p {
+            margin: 0;
+            color: var(--color-text-medium);
+            font-size: var(--font-size-sm);
+        }
+
+        .cookie-banner__actions {
+            display: flex;
+            gap: var(--space-sm);
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 768px) {
+            .cookie-banner__content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .cookie-banner__actions {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</body>
+
+</html>
